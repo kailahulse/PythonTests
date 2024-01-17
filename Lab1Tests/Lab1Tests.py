@@ -8,19 +8,19 @@ from io import StringIO
 
 class SimpleTests(unittest.TestCase):
     # word is aback
-   # @mock.patch('random.*', 9)
-    # @mock.patch('builtins.input', create=True)
-    # def test_Exit(self, mocked_input):
-    #      # Set up the incorrect input
-    #     mocked_input.side_effect = ['quit']
+   @mock.patch('random.*', 9)
+    @mock.patch('builtins.input', create=True)
+    def test_Exit(self, mocked_input):
+         # Set up the incorrect input
+        mocked_input.side_effect = ['quit']
 
-    #     with self.assertRaises(SystemExit) as cm:
-    #         func1()
-    #         pass
+        with self.assertRaises(SystemExit) as cm:
+            func1()
+            pass
 
-    #     # Check the exit code if needed
-    #     if cm.exception.code is not None:
-    #         self.fail(f"Unexpected SystemExit with code: {cm.exception.code}")
+        # Check the exit code if needed
+        if cm.exception.code is not None:
+            self.fail(f"Unexpected SystemExit with code: {cm.exception.code}")
     
     # Define a lambda function that takes two arguments and returns 9
     mocked_random_choice = lambda a, b: 9
@@ -47,27 +47,27 @@ class SimpleTests(unittest.TestCase):
                 
                 self.assertIn("You Win", output_string)
 
-    # @mock.patch('random.randint', 9) 
-    # @mock.patch('random.random', 9)
-    # @mock.patch('random.randrange', 9)    
-    # @mock.patch('builtins.input', create=True)
-    # def test_FailedGame(self, mocked_input):
-    #     mocked_input.side_effect = ['z', 'y', 'n', 'w']
-    #     capturedOutput = StringIO.StringIO()
-    #     sys.stdout = capturedOutput
-    #     main()
-    #     sys.stdout = sys.__stdout__  
-    #     print('Captured')
-    #     capturedOutput.getvalue()
-    #     self.assertIn("You lose", capturedOutput.getvalue())
+    @mock.patch('random.randint', 9) 
+    @mock.patch('random.random', 9)
+    @mock.patch('random.randrange', 9)    
+    @mock.patch('builtins.input', create=True)
+    def test_FailedGame(self, mocked_input):
+        mocked_input.side_effect = ['z', 'y', 'n', 'w']
+        capturedOutput = StringIO.StringIO()
+        sys.stdout = capturedOutput
+        main()
+        sys.stdout = sys.__stdout__  
+        print('Captured')
+        capturedOutput.getvalue()
+        self.assertIn("You lose", capturedOutput.getvalue())
                 
-    # # Patch the functions that take two arguments with the lambda function
-    # @mock.patch('random.randint', mocked_random_choice) 
-    # @mock.patch('random.randrange', mocked_random_choice) 
-    # # Patch the function that takes no arguments with the lambda function
-    # @mock.patch('random.random', mocked_random_random)
-    # @mock.patch('builtins.input', side_effect = ['a', 'b', 'a', 'c', 'k', 'quit'])
-    # def test_FailedGame
+    # Patch the functions that take two arguments with the lambda function
+    @mock.patch('random.randint', mocked_random_choice) 
+    @mock.patch('random.randrange', mocked_random_choice) 
+    # Patch the function that takes no arguments with the lambda function
+    @mock.patch('random.random', mocked_random_random)
+    @mock.patch('builtins.input', side_effect = ['a', 'b', 'a', 'c', 'k', 'quit'])
+    def test_FailedGame
 
 
 
