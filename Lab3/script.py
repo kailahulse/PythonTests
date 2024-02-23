@@ -1,6 +1,8 @@
 import subprocess
 import time
-
+# This file was a script used to open one server terminal and 5 client terminals to stress test students code
+# This can be useful whenever you may need to open multiple terminals at once 
+# you can change the functionality by changing client_command and server_command to whichever files you want to open
 def open_terminal(command):
     subprocess.Popen(["cmd.exe", "/c", "start", "cmd.exe", "/k", command])
 
